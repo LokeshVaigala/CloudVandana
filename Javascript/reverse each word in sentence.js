@@ -13,6 +13,6 @@ function reverseWordsInSentence(sentence) {
 }
 
 // Example usage:
-const inputSentence = "Hello, World!";
+const inputSentence = "this is sunny day";
 const reversedSentence = reverseWordsInSentence(inputSentence);
-console.log(reversedSentence); // Outputs: "olleH, !dlroW"
+console.log(reversedSentence); // Outputs: "siht si ynnus yad"
