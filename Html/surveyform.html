@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <form id="surveyForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="india">India</option>
+	  <option value="Indonesia">Indonesia</option>
+	  <option value="Irland">IrLand</option> 
+	  <option value="Afghanistan">Afghanistan</option>
+	  <option value="SriLanka">SriLanka</option>
+	  <option value="Australia">Australia</option>
+	  <option value="NewZeland">NewZeland</option>
+	  <option value="Pakistan">Pakistan</option>
+	  <option value="Scotland">Scotland</option>
+	  <option value="WestIndies">WestIndies</option>
+	  <option value="Own country">Own country etc this for purpose of cloud vandana</option>
+
+        </select><br><br>
+
+        <label>Gender:</label><br>
+        <input type="checkbox" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="checkbox" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" required><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <div id="popup" style="display: none;">
+        <h2>Survey Form Submission</h2>
+        <p>First Name: <span id="popupFirstName"></span></p>
+        <p>Last Name: <span id="popupLastName"></span></p>
+        <p>Date of Birth: <span id="popupDob"></span></p>
+        <p>Country: <span id="popupCountry"></span></p>
+        <p>Gender: <span id="popupGender"></span></p>
+        <p>Profession: <span id="popupProfession"></span></p>
+        <p>Email: <span id="popupEmail"></span></p>
+        <p>Mobile Number: <span id="popupMobile"></span></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Get input values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const dob = document.getElementById('dob').value;
+            const country = document.getElementById('country').value;
+            const gender = document.querySelectorAll('input[name="gender"]:checked');
+            const profession = document.getElementById('profession').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+
+            if (gender.length === 0) {
+                alert('Please select a gender.');
+                return;
+            }
+
+            // Display a popup with the submitted data
+            document.getElementById('popupFirstName').textContent = firstName;
+            document.getElementById('popupLastName').textContent = lastName;
+            document.getElementById('popupDob').textContent = dob;
+            document.getElementById('popupCountry').textContent = country;
+            document.getElementById('popupGender').textContent = gender[0].value;
+            document.getElementById('popupProfession').textContent = profession;
+            document.getElementById('popupEmail').textContent = email;
+            document.getElementById('popupMobile').textContent = mobile;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('surveyForm').reset();
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            resetForm();
+        }
+    </script>
+</body>
+</html>
